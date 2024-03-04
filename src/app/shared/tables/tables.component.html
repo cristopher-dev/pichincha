@@ -1,0 +1,67 @@
+<div class="col-md-4">
+  <p>Mostrando {{ bodies.length }} resultados</p>
+</div>
+<div style="overflow-x: auto">
+  <table id="customers">
+    <thead>
+      <tr>
+        <th
+          *ngFor="let headerItem of header"
+          class="text-start text-capitalize"
+        >
+          {{ headerItem.th }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let bodyItem of displayedBodies"
+        (click)="rowClick($event, bodyItem)"
+        class="pointer"
+      >
+        <td>{{ bodyItem.id }}</td>
+        <td>{{ bodyItem.name }}</td>
+        <td>{{ bodyItem.description }}</td>
+        <td>
+          <img [src]="bodyItem.logo" class="size-img" />
+        </td>
+        <td>{{ bodyItem.date_release | date : "mediumDate" }}</td>
+        <td>{{ bodyItem.date_revision | date : "mediumDate" }}</td>
+        <td class="text-center">
+          <app-dropdown
+            (onClick)="onClickDropdown($event, bodyItem)"
+          ></app-dropdown>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container my-5 mx-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group pagination-w">
+        <button class="btn btn-primary mr-2" (click)="goToPreviousPage()">
+          Anterior
+        </button>
+        <button class="btn btn-primary" (click)="goToNextPage()">
+          Siguiente
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+       <select
+        class="form-control"
+        id="recordsPerPage"
+        (change)="changeRecordsPerPage($event.target['value'])"
+      >
+        <option *ngFor="let option of recordsPerPageOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+
+</div>

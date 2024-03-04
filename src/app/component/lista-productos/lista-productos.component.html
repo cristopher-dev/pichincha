@@ -1,0 +1,31 @@
+<div class="row justify-content-between mx-5 mb-4">
+  <form [formGroup]="inputSearch" class="h-25 w-25 mx-5">
+    <input
+      type="text"
+      id="fname"
+      formControlName="inputSearch"
+      placeholder="Buscar ID"
+    />
+  </form>
+  <button
+    class="btn h-25 align-self-center"
+    (click)="addButton()"
+    routerLink="/formulario-producto/agregar"
+  >
+    agregar
+  </button>
+</div>
+<app-tables
+  [body]="body"
+  [header]="header"
+  [searches]="searchesTable"
+  (dropdown)="dropdown($event)"
+>
+</app-tables>
+<app-modal
+  [showModal]="openModals"
+  (buttonAccepts)="buttonAccepts($event)"
+  [header]="'ELIMINAR'"
+  [footer]="'ADVERTENCIA'"
+  [section]="'ESTA SEGURO QUE DESEA ELIMINAR'"
+></app-modal>

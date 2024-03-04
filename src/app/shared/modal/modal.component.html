@@ -1,0 +1,18 @@
+<!-- modal.component.html -->
+<div *ngIf="showModal" class="modal" style="display: block">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>{{ header }}</h2>
+    </div>
+    <div class="modal-body">
+      <p>{{ section }}</p>
+    </div>
+    <div class="modal-actions">
+      <button class="button-accept" (click)="buttonAccept()">Aceptar</button>
+    </div>
+    <div class="modal-footer">
+      <h3>{{ footer }}</h3>
+    </div>
+  </div>
+</div>
